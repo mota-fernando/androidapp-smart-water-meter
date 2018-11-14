@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "738073728961",
+    "firebase_url": "https://hidrometrointeligente.firebaseio.com",
+    "project_id": "hidrometrointeligente",
+    "storage_bucket": "hidrometrointeligente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:738073728961:android:3cdd1e6d1794fa20",
+        "android_client_info": {
+          "package_name": "mota.fernando.hidrometrointeligente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "738073728961-alir3j80jdd4s94jo40tsttj1ndqjue5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "mota.fernando.hidrometrointeligente",
+            "certificate_hash": "b3a1199a593c5a38b1f9f923d9ef348fa01bb375"
+          }
+        },
+        {
+          "client_id": "738073728961-af634c3ul31rf4nk6ltc0ljosg9eq0tv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5XOodJlbBWXYypFS_kh-kLXVwGmhqXYE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "738073728961-h08uqr30a5l9q6a4voli4jghe7vu1oo3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
