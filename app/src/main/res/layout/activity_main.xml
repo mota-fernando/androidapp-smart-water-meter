@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_content"
-    android:layout_width="match_parent"
+    android:layout_width="fill_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:fitsSystemWindows="true"
@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:background="@android:color/holo_blue_dark"
             app:tabGravity="fill"
+            app:tabMaxWidth="0dp"
             app:tabIndicatorColor="#ffffff">
 
             <android.support.design.widget.TabItem
@@ -47,6 +48,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/tab_text_2" />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/tabItem3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Preferências" />
 
 
         </android.support.design.widget.TabLayout>
@@ -66,4 +73,4 @@
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-</android.support.design.widget.CoordinatorLayout>
+</LinearLayout>

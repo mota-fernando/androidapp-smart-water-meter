@@ -8,34 +8,40 @@
     android:orientation="vertical"
     tools:context=".MainActivity$PlaceholderFragment">
 
-    <TextView
-        android:id="@+id/section_label"
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/btnDatepickerIni"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginEnd="@dimen/activity_horizontal_margin"
-        android:layout_marginStart="@dimen/activity_horizontal_margin"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:text="@string/tab_text_2"
-        app:layout_constraintTop_toTopOf="@+id/constraintLayout"
-        tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1" />
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/textView"
+        android:text="Início" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:gravity="center_horizontal"
+        android:text="Escolha um período entre duas datas" />
 
     <Button
-        android:id="@+id/btnAbrirGrafico"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnDatepickerFim"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button"
-        tools:layout_editor_absoluteX="118dp"
-        tools:layout_editor_absoluteY="92dp" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/btnDatepickerIni"
+        android:text="Fim" />
 
     <com.jjoe64.graphview.GraphView
         android:id="@+id/graph"
-        android:layout_below="@id/btnAbrirGrafico"
+        android:layout_below="@id/btnDatepickerFim"
         android:layout_margin="16dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
          />
+
+
 
 </RelativeLayout>

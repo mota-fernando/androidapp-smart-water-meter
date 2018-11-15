@@ -2,15 +2,16 @@ package mota.fernando.hidrometrointeligente;
 
 public class Consumo {
 
-    public int xvalue, yvalue;
+    public long xvalue;
+    public int yvalue;
 
     public void Consumo(){}
 
-    public int getxvalue() {
+    public long getxvalue() {
         return xvalue;
     }
 
-    public void setxvalue(int xvalue) {
+    public void setxvalue(long xvalue) {
         this.xvalue = xvalue;
     }
 

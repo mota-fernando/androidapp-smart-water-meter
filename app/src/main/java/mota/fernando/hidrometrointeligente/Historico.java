@@ -41,49 +41,39 @@ import java.util.TimeZone;
 
 public class Historico extends Fragment {
 
-    SimpleDateFormat dttm = new SimpleDateFormat("hh:mm:ss");
-    SimpleDateFormat formatt = new SimpleDateFormat("EEEE, MMMM d, yyyy 'at' hh:mm a");
+    SimpleDateFormat dttm = new SimpleDateFormat("HH:mm:ss");
     SimpleDateFormat jdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ");
+    SimpleDateFormat btnDt = new SimpleDateFormat("dd-MM-yyyy' HORA: 'HH:mm:ss");
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
     GraphView graph;
     BarGraphSeries series;
     Calendar date;
-    Button brnDatepicker;
+    Button brnDatepickerIni, brnDatepickerFim;
     int index = 0;
-    long unixtime;
+    long[] unixtime = new long[2];
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.activity_historico, container, false);
-      /*  TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-        textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER))); */
 
-        brnDatepicker = (Button)rootView.findViewById(R.id.btnDatepicker);
-        brnDatepicker.setOnClickListener(new View.OnClickListener (){
+        brnDatepickerIni = (Button)rootView.findViewById(R.id.btnDatepickerIni);
+        brnDatepickerIni.setOnClickListener(new View.OnClickListener (){
             @Override
             public void onClick(View view) {
-                showDateTimePicker();
-              //  date[index] = Calendar.getInstance();
-               // if (index < 1) {
-                 //   index = 1;
-
-                    //formatt.format(date[index].getTime())
-
-
-              //  }else {
-                //    index = 0;
-
-                   // long unixtime =  date[index].getTimeInMillis();
-                   // Date date2 = formatt.parse(date[index]);
-
+                showDateTimePicker(0);
 
                 }
-                //Intent in = new Intent(getActivity(), Grafico.class);
-                //in.putExtra("some", "some data");
-                //startActivity(in);
-           // }
+
             });
+
+        brnDatepickerFim = (Button)rootView.findViewById(R.id.btnDatepickerFim);
+        brnDatepickerFim.setOnClickListener(new View.OnClickListener (){
+            @Override
+            public void onClick(View view) {
+                showDateTimePicker(1);
+            }
+         });
 
         graph = (GraphView) rootView.findViewById(R.id.graph);
         series = new BarGraphSeries();
@@ -129,7 +119,7 @@ public class Historico extends Fragment {
 
     }
     public void drawGraph(){
-        databaseReference.orderByChild("xvalue").startAt(unixtime).addValueEventListener(new ValueEventListener() {
+        databaseReference.orderByChild("xvalue").startAt(unixtime[0]).endAt(unixtime[1]).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
@@ -160,8 +150,9 @@ public class Historico extends Fragment {
     public void onStart() {
         super.onStart();
         drawGraph();
+
     }
-    public void showDateTimePicker() {
+    public void showDateTimePicker(final int index) {
         final Calendar currentDate = Calendar.getInstance();
         date = Calendar.getInstance();
         new DatePickerDialog(getActivity(), new DatePickerDialog.OnDateSetListener() {
@@ -183,13 +174,16 @@ public class Historico extends Fragment {
                             e.printStackTrace();
                         }
 
-                        unixtime = date2.getTime();
+                        unixtime[index] = date2.getTime();
                         drawGraph();
-                        //formatt.format(date[index].getTime())
-                        brnDatepicker.setText("Período inicial" + unixtime  +"date2 "+ date2);
+                        if (index == 0)
+                             brnDatepickerIni.setText("INÍCIO: " + btnDt.format(date.getTime()));
+                        else
+                             brnDatepickerFim.setText("FIM: " + btnDt.format(date.getTime()));
+
                     }
                 }, currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), true).show();
-             //   brnDatepicker.setText(date[index].get(Calendar.DAY_OF_MONTH) + " " + date[index].get(Calendar.MONTH) + " " + date[index].get(Calendar.YEAR));
+
 
             }
         }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();

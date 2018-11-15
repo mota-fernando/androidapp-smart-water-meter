@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Preferencias"
+    android:orientation="vertical">
+
+    <Switch
+        android:id="@+id/switchfa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:text="Fluxo de água"
+        android:textOff="Fechado"
+        android:textOn="Aberto"
+        android:padding="16dp"/>
+
+    <Switch
+        android:id="@+id/switchia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginTop="20dp"
+        android:text="Inteligência Artificial"
+        android:textOff="Desligar"
+        android:textOn="Ligar"
+        android:padding="16dp"/>
+
+    <Button
+        android:id="@+id/btnConfirmaSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="#009284"
+        android:padding="10dp"
+        android:text="Confirmar"
+        android:textColor="#fff"
+        android:textStyle="bold" />
+
+</LinearLayout>
