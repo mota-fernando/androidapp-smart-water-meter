@@ -1,5 +1,9 @@
 package mota.fernando.hidrometrointeligente;
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.graphics.Color;
+import android.os.Build;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,9 +15,16 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.text.util.Linkify;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.FrameLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
-
+    private AlertDialog alerta;
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -60,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
     }
 
 
@@ -80,7 +90,18 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            //define o titulo
+            builder.setTitle("Sobre");
+            //define a mensagem
+            builder.setMessage("Criado por Fernando Mota.\n\nCódigo fonte:");
+            TextView textView = new TextView(this);
+            textView.setText(R.string.link_github);
+            textView.setMovementMethod(LinkMovementMethod.getInstance());
+            textView.setPadding(16,0,0,0);
+            builder.setView(textView);
+            alerta = builder.create();
+            alerta.show();
         }
 
         return super.onOptionsItemSelected(item);
